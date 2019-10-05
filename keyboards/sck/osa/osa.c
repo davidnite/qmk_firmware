@@ -42,7 +42,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
 
   return process_record_user(keycode, record);
 }
-*/
 
 void matrix_init_board(void){
     setPinOutput(C7);
@@ -70,4 +69,4 @@ void led_set_kb(uint8_t usb_led) {
     }
   led_set_user(usb_led);
 }
-
+*/
