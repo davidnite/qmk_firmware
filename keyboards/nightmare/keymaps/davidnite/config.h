@@ -17,3 +17,7 @@
 #pragma once
 
 // place overrides here
+
+#ifdef AUDIO_ENABLE
+  #define STARTUP_SONG SONG(SONIC_RING)
+#endif
