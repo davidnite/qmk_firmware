@@ -23,28 +23,7 @@
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
- /* Keymap OSX: (OSX Layer) OSX OS Layer
-   * .----.,----------------------------------------------------------------------.
-   * | M1 ||Esc| 1 |  2|  3|  4|  5|  6|          |  7|  8|  9|  0|  -|  =| ~ | \ |
-   * |----||----------------------------------------------------------------------|
-   * | M2 ||Tab  |  Q|  W|  E|  R|  T|          |  Y|  U|  I|  O|  P| [ | ] |BkSpc|
-   * |----||----------------------------------------------------------------------|
-   * | M3 ||Gui    |  A|  S|  D|  F|  G|          |  H|  J|  K|  L|  ;|  '|Return |
-   * `----'|----------------------------------------------------------------------|
-   *       |Shift   |  Z|  X|  C|  V|  B|     |  B|  N|  M|  ,|  .|  /|Shift | Fn |
-   *       |----------------------------------------------------------------------|
-   *       |Ctrl|    | Alt | Space | Fn |     | Space | Alt |             | OS Tog|
-   *       `----------------------------------------------------------------------'
-   */
-[1] = LAYOUT_all( /* OSA OSX */
-	LGUI(KC_C),  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,   KC_5,   KC_6,              KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,
-	LGUI(KC_V),  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,    					KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
-	LGUI(KC_S),  KC_LGUI, KC_A,    KC_S,    KC_D,    KC_F,   KC_G,    					KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
-	             KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,	                    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, MO(3),
-	             KC_LCTL,          KC_LALT,          KC_SPC, MO(3),                     KC_SPC,                    KC_RALT,                            TG(2)
-  ),
-
-/* Keymap LIN: (LIN Layer) Linux OS Layer
+ /* Keymap BASE: (Base Layer) Default Layer
    * .----.,----------------------------------------------------------------------.
    * | M1 ||Esc| 1 |  2|  3|  4|  5|  6|          |  7|  8|  9|  0|  -|  =| ~ | \ |
    * |----||----------------------------------------------------------------------|
@@ -54,34 +33,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `----'|----------------------------------------------------------------------|
    *       |Shift   |  Z|  X|  C|  V|  B|     |  B|  N|  M|  ,|  .|  /|Shift | Fn |
    *       |----------------------------------------------------------------------|
-   *       |Gui |    | Alt | Space | Fn |     | Space | Alt |             | OS Tog|
+   *       |Gui|    | Alt | Space | Fn |     | Space | Alt |               | Ctrl|
    *       `----------------------------------------------------------------------'
    */
-[2] = LAYOUT_all( /* OSA LIN */
-	LCTL(KC_C),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,          KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-	LCTL(KC_V),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,    			     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-	LCTL(KC_S),  KC_LCTL,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,    			     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-	             KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,	                 KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-	             KC_LGUI,            KC_TRNS,            KC_TRNS,   KC_TRNS,                     KC_TRNS,                      KC_TRNS,                                KC_TRNS
+[0] = LAYOUT_all( /* OSA Linux Base */
+	C(KC_C),   KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,   KC_5,   KC_6,              KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS,  KC_GRV,
+	C(KC_V),  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,    					 KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
+	C(KC_S),  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,   KC_G,    					 KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
+	          KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,	                     KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, MO(2),
+	          KC_LGUI,          KC_LALT,          MO(2), TG(1),                     KC_SPC,                    KC_RALT,                            KC_RCTL
+  ),
+  /* Keymap BASE: (Base Layer) Default Layer
+   * .----.,----------------------------------------------------------------------.
+   * | M1 ||Esc| 1 |  2|  3|  4|  5|  6|          |  7|  8|  9|  0|  -|  =| ~ | \ |
+   * |----||----------------------------------------------------------------------|
+   * | M2 ||Tab  |  Q|  W|  E|  R|  T|          |  Y|  U|  I|  O|  P| [ | ] |BkSpc|
+   * |----||----------------------------------------------------------------------|
+   * | M3 ||Gui   |  A|  S|  D|  F|  G|          |  H|  J|  K|  L|  ;|  '|Return |
+   * `----'|----------------------------------------------------------------------|
+   *       |Shift   |  Z|  X|  C|  V|  B|     |  B|  N|  M|  ,|  .|  /|Shift | Fn |
+   *       |----------------------------------------------------------------------|
+   *       |Ctrl|    | Alt | Space | Fn |     | Space | Alt |               | Ctrl|
+   *       `----------------------------------------------------------------------'
+   */
+[1] = LAYOUT_all( /* OSA OSX Base */
+	G(KC_C),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,
+	G(KC_V),  KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    				KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+	G(KC_S),  KC_LGUI, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    				KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS,
+	          KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,	                  KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+	          KC_LCTL,           KC_TRNS,          KC_TRNS,  _______,                     KC_TRNS,                  KC_TRNS,                            KC_TRNS
   ),
 
-[3] = LAYOUT_all( /* OSA Control */
-	KC_MPLY,   KC_TRNS,  KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F5,      KC_F6,           KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_TRNS,  KC_DEL,
-	KC__MUTE,  KC_TRNS,  KC_HOME,   KC_UP,     KC_END,    KC_TRNS,   KC_TRNS,    				  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-	KC_EJCT,   KC_TRNS,  KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_TRNS,   KC_TRNS,    				  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-	           KC_VOLU,   KC_PGUP,  KC_DEL,    KC_PGDN,   KC_TRNS,   KC_TRNS,	                  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-	           KC_VOLD,             KC_TRNS,              KC_TRNS,   KC_TRNS,                     KC_TRNS,                      KC_TRNS,                                KC_TRNS
+[2] = LAYOUT_all( /* OSA Fn Layer */
+	KC_MPLY,  KC_F1,   KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,              KC_F8,     KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS, KC_TRNS,  KC_DEL,
+	KC_VOLU,  KC_TRNS, KC_HOME,  KC_UP,   KC_END,  KC_TRNS, KC_TRNS,    				KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+	KC_VOLD,  KC_TRNS, KC_LEFT,  KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS,    				KC_LEFT, KC_DOWN,   KC_UP,   KC_RGHT, KC_TRNS, KC_TRNS,          KC_TRNS,
+	          KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,	                  G(KC_PGDN), G(KC_PGUP), KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+	          KC_TRNS,           KC_TRNS,          KC_TRNS,  _______,                     RESET,                  KC_TRNS,                            KC_TRNS
   ),
-
-
-// [4] = LAYOUT_all( /* OSA TBD */
-// 	KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,          KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-// 	KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,    					 KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-// 	KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,    					 KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,             KC_TRNS,
-// 	           KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,	                     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-// 	           KC_TRNS,             KC_TRNS,             KC_TRNS,   KC_TRNS,                      KC_TRNS,                        KC_TRNS,                                   KC_TRNS
-//   ),
-
 };
 
 
@@ -137,14 +126,14 @@ uint32_t layer_state_set_user(uint32_t state)
         writePinLow(C7);
     }
     if (state & (1<<2)) {
-    writePinHigh(C6);
-    } else {
-        writePinLow(C6);
-    }
-    if (state & (1<<3)) {
     writePinHigh(B6);
     } else {
         writePinLow(B6);
     }
+    // if (state & (1<<2)) {
+    // writePinHigh(B6);
+    // } else {
+    //     writePinLow(B6);
+    // }
     return state;
 }
