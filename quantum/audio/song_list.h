@@ -174,8 +174,25 @@
     Q__NOTE(_B4), \
     HD_NOTE(_C5),
 #define OVERWATCH_THEME
-#define MARIO_THEME
-#define MARIO_GAMEOVER
+#define MARIO_THEME \
+    Q__NOTE(_E5), \
+    H__NOTE(_E5), \
+    H__NOTE(_E5), \
+    Q__NOTE(_C5), \
+    H__NOTE(_E5), \
+    W__NOTE(_G5), \
+    Q__NOTE(_G4),
+#define MARIO_GAMEOVER \
+    HD_NOTE(_C5 ), \
+    HD_NOTE(_G4 ), \
+    H__NOTE(_E4 ), \
+    H__NOTE(_A4 ), \
+    H__NOTE(_B4 ), \
+    H__NOTE(_A4 ), \
+    H__NOTE(_AF4), \
+    H__NOTE(_BF4), \
+    H__NOTE(_AF4), \
+    WD_NOTE(_G4 ),
 #define MARIO_MUSHROOM
 #define E1M1_DOOM
 #define DISNEY_SONG
