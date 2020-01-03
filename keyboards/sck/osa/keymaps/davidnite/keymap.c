@@ -103,11 +103,11 @@ void matrix_init_user(void) {
   setPinOutput(C7);
   writePinLow(C7);
   // set NumLock LED to output and low
-  setPinOutput(C6);
-  writePinLow(C6);
+  // setPinOutput(C6);
+  // writePinLow(C6);
   // set ScrollLock LED to output and low
-  setPinOutput(B6);
-  writePinLow(B6);
+  // setPinOutput(B6);
+  // writePinLow(B6);
 }
 
 void matrix_scan_user(void) {
@@ -125,11 +125,11 @@ uint32_t layer_state_set_user(uint32_t state)
     } else {
         writePinLow(C7);
     }
-    if (state & (1<<2)) {
-    writePinHigh(B6);
-    } else {
-        writePinLow(B6);
-    }
+    // if (state & (1<<2)) {
+    // writePinHigh(C6);
+    // } else {
+    //     writePinLow(C6);
+    // }
     // if (state & (1<<2)) {
     // writePinHigh(B6);
     // } else {

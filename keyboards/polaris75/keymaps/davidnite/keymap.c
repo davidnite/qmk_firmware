@@ -21,14 +21,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_INS, KC_F12, KC_F11, KC_F10, KC_DEL, KC_F9),
 
 	[_FN] = KEYMAP(
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_END, KC_VOLD, KC_HOME, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_END, G(KC_PGDN), KC_HOME, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		RESET, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		
-		KC_VOLU, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		G(KC_PGUP), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
@@ -53,16 +53,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint32_t layer_state_set_user(uint32_t state) {
     switch (biton32(state)) {
     case 0:
-        rgblight_sethsv (0, 255, 128);
+        rgblight_sethsv (HSV_TEAL);
         break;
     case 1:
-        rgblight_sethsv (132, 102, 128);
+        rgblight_sethsv (HSV_PURPLE);
         break;
     case 2:
-        rgblight_sethsv (0, 0, 128);
+        rgblight_sethsv (HSV_CORAL);
         break;
     default: //  for any other layers, or the default layer
-        rgblight_sethsv (0, 255, 128);
+        rgblight_sethsv (HSV_TEAL);
         break;
     }
   return state;
