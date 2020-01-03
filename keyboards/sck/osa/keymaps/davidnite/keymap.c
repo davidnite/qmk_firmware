@@ -74,7 +74,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-
+//float layer_sound_0[][2] = SONG(ONE_UP_SOUND);
+float layer_sound_1[][2] = SONG(ZELDA_PUZZLE);
 
 //bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //  switch (keycode) {
@@ -135,5 +136,18 @@ uint32_t layer_state_set_user(uint32_t state)
     // } else {
     //     writePinLow(B6);
     // }
+    switch (biton32(state)) {
+    case 0:
+        //PLAY_SONG(layer_sound_1);
+        break;
+    case 1:
+        PLAY_SONG(layer_sound_1);
+        break;
+    case 2:
+        //PLAY_SONG(layer_sound_0);
+        break;
+    default: //  for any other layers, or the default layer
+        break;
+    }
     return state;
 }

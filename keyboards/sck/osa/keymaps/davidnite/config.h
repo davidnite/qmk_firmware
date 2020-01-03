@@ -16,4 +16,10 @@
 
 #pragma once
 
+#define C6_AUDIO
+
+#ifdef AUDIO_ENABLE
+  #define STARTUP_SONG SONG(SONIC_RING)
+#endif
+
 // place overrides here
