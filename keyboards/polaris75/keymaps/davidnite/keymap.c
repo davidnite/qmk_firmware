@@ -54,19 +54,19 @@ uint32_t layer_state_set_user(uint32_t state) {
     switch (biton32(state)) {
     case 0:
 		rgblight_setrgb_range(0, 0, 0, 0, 16);
-        rgblight_setrgb_range(RGB_TURQUOISE, 16, 20);
+        rgblight_setrgb_range(RGB_WHITE, 16, 20);
         break;
     case 1:
 		rgblight_setrgb_range(0, 0, 0, 0, 16);
-        rgblight_setrgb_range(RGB_PURPLE, 16, 20);
+        rgblight_setrgb_range(RGB_MAGENTA, 16, 20);
         break;
     case 2:
 		rgblight_setrgb_range(0, 0, 0, 0, 16);
-        rgblight_setrgb_range(RGB_MAGENTA, 16, 20);
+        rgblight_setrgb_range(RGB_TURQUOISE, 16, 20);
         break;
     default: //  for any other layers, or the default layer
 		rgblight_setrgb_range(0, 0, 0, 0, 16);
-        rgblight_setrgb_range(RGB_TURQUOISE, 16, 20);
+        rgblight_setrgb_range(RGB_WHITE, 16, 20);
         break;
     }
   return state;
@@ -74,7 +74,7 @@ uint32_t layer_state_set_user(uint32_t state) {
 
 void keyboard_post_init_user(void) {
 	rgblight_setrgb_range(0, 0, 0, 0, 16);
-    rgblight_setrgb_range(RGB_TURQUOISE, 16, 20);
+    rgblight_setrgb_range(RGB_WHITE, 16, 20);
 }
 
 void matrix_init_user(void) {
