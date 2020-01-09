@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_CAPS,          KC_HOME,  KC_UP,  KC_END,  ______,  ______,  ______,  ______,  ______,  ______,  ______,  ______,   ______,  ______,
 		______,             KC_LEFT,  KC_DOWN,  KC_RIGHT,  ______,  ______,  ______,  ______,  ______, ______,   ______,   ______, ______,
 		______,            KC_PGUP,  KC_DEL,  KC_PGDN, ______, ______,   ______,  ______,  KC_MPRV,  KC_MNXT, KC_MPLY,     ______,  ______,
-		         ______,           ______,                    ______,                              ______,            ______),
+		         RESET,           ______,                    ______,                              ______,            ______),
 
 
 
@@ -163,3 +163,28 @@ RGB_M_X   ->  Christmas animation mode
 RGB_M_G   ->  Static gradient animation mode
 
 */
+
+uint32_t layer_state_set_user(uint32_t state) {
+    switch (biton32(state)) {
+    case 0:
+        rgblight_setrgb(RGB_RED);
+        break;
+    case 1:
+        rgblight_setrgb(RGB_TURQUOISE);
+        break;
+    case 2:
+        rgblight_setrgb(RGB_RED);
+        break;
+    case 3:
+        rgblight_setrgb(RGB_WHITE);
+        break;
+    default: //  for any other layers, or the default layer
+        rgblight_setrgb(RGB_RED);
+        break;
+    }
+  return state;
+}
+
+void keyboard_post_init_user(void) {
+    rgblight_setrgb(RGB_RED);
+}
