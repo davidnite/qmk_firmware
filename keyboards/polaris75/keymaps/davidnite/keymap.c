@@ -16,22 +16,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		
 		KC_UP, KC_LSFT, KC_SLSH, KC_DOT, KC_COMM, 
 		KC_ENT, KC_QUOT, KC_SCLN, KC_L, 
-		KC_DEL, KC_BSLS, KC_RBRC, KC_LBRC, KC_P, KC_O, 
-		KC_HOME, KC_EQL, KC_MINS, KC_BSPC, KC_0, KC_9, 
-		KC_INS, KC_F12, KC_F11, KC_F10, KC_DEL, KC_F9),
+		G(KC_PGDN), KC_BSPC, KC_RBRC, KC_LBRC, KC_P, KC_O, 
+		G(KC_PGUP), KC_EQL, KC_MINS, KC_BSLS, KC_0, KC_9, 
+		KC_DEL, KC_F12, KC_F11, KC_F10, KC_PSCR, KC_F9),
 
 	[_FN] = KEYMAP(
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_END, G(KC_PGDN), KC_HOME, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY, KC_VOLD, KC_MUTE, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		RESET, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		
-		G(KC_PGUP), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_VOLU, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_END, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_HOME, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
 	[_LIGHTS] = KEYMAP(
@@ -53,28 +53,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint32_t layer_state_set_user(uint32_t state) {
     switch (biton32(state)) {
     case 0:
-		rgblight_setrgb_range(0, 0, 0, 0, 16);
-        rgblight_setrgb_range(RGB_WHITE, 16, 20);
+		rgblight_sethsv_range(128, 100, 0, 0, 16);
+        rgblight_sethsv_range(128, 255, 75, 16, 20);
         break;
     case 1:
-		rgblight_setrgb_range(0, 0, 0, 0, 16);
-        rgblight_setrgb_range(RGB_MAGENTA, 16, 20);
+		rgblight_sethsv_range(213, 255, 0, 0, 16);
+        rgblight_sethsv_range(213, 255, 75, 16, 20);
         break;
     case 2:
 		rgblight_setrgb_range(0, 0, 0, 0, 16);
-        rgblight_setrgb_range(RGB_TURQUOISE, 16, 20);
+        rgblight_setrgb_range(0, 0, 255, 16, 20);
         break;
     default: //  for any other layers, or the default layer
-		rgblight_setrgb_range(0, 0, 0, 0, 16);
-        rgblight_setrgb_range(RGB_WHITE, 16, 20);
+		rgblight_sethsv_range(128, 100, 0, 0, 16);
+        rgblight_sethsv_range(128, 255, 75, 16, 20);
         break;
     }
   return state;
 }
 
 void keyboard_post_init_user(void) {
-	rgblight_setrgb_range(0, 0, 0, 0, 16);
-    rgblight_setrgb_range(RGB_WHITE, 16, 20);
+	rgblight_sethsv_range(128, 100, 0, 0, 16);
+    rgblight_sethsv_range(128, 255, 75, 16, 20);
 }
 
 void matrix_init_user(void) {
