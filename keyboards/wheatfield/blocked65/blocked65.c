@@ -1,4 +1,5 @@
 #include "blocked65.h"
+<<<<<<< HEAD
 
 __attribute__ ((weak))
 void matrix_init_keymap(void) {}
@@ -39,3 +40,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void led_set_user(uint8_t usb_led) {
   led_set_keymap(usb_led);
 }
+=======
+>>>>>>> upstream/master
