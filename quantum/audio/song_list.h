@@ -199,8 +199,61 @@
     H__NOTE(_BF4), \
     H__NOTE(_AF4), \
     WD_NOTE(_G4 ),
-#define MARIO_MUSHROOM
-#define E1M1_DOOM
+#define MARIO_MUSHROOM \
+    S__NOTE(_C5 ), \
+    S__NOTE(_G4 ), \
+    S__NOTE(_C5 ), \
+    S__NOTE(_E5 ), \
+    S__NOTE(_G5 ), \
+    S__NOTE(_C6 ), \
+    S__NOTE(_G5 ), \
+    S__NOTE(_GS4), \
+    S__NOTE(_C5 ), \
+    S__NOTE(_DS5), \
+    S__NOTE(_GS5), \
+    S__NOTE(_DS5), \
+    S__NOTE(_GS5), \
+    S__NOTE(_C6 ), \
+    S__NOTE(_DS6), \
+    S__NOTE(_GS6), \
+    S__NOTE(_DS6), \
+    S__NOTE(_AS4), \
+    S__NOTE(_D5 ), \
+    S__NOTE(_F5 ), \
+    S__NOTE(_AS5), \
+    S__NOTE(_D6 ), \
+    S__NOTE(_F6 ), \
+    S__NOTE(_AS6), \
+    S__NOTE(_F6 )
+#define E1M1_DOOM  \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E4 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_D4 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_C4 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_BF3), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_B3 ), \
+    Q__NOTE(_C4 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E4 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_D4 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_C4 ), \
+    Q__NOTE(_E3 ), \
+    Q__NOTE(_E3 ), \
+    H__NOTE(_BF3),
 #define DISNEY_SONG
 #define NUMBER_ONE
 #define CABBAGE_SONG
@@ -223,7 +276,12 @@
 #define KAINE_SALVATION
 #define WEIGHT_OF_THE_WORLD
 #define ISABELLAS_LULLABY
-#define TERRAS_THEME
+#define TERRAS_THEME \
+  Q__NOTE(_GS5), Q__NOTE(_AS5), Q__NOTE(_B5), Q__NOTE(_EF6), BD_NOTE(_B5), Q__NOTE(_AS5), Q__NOTE(_GS5), W__NOTE(_AS5), \
+  BD_NOTE(_DS5), Q__NOTE(_AF5), Q__NOTE(_BF5), Q__NOTE(_B5), Q__NOTE(_DS6), BD_NOTE(_B5), \
+  Q__NOTE(_BF5), Q__NOTE(_AF5), W__NOTE(_AS5), BD_NOTE(_DS6), Q__NOTE(_B5), Q__NOTE(_CS6), Q__NOTE(_DS6), \
+  Q__NOTE(_FS6), BD_NOTE(_DS6), Q__NOTE(_CS6), Q__NOTE(_B5), W__NOTE(_CS6), BD_NOTE(_FS5), \
+  Q__NOTE(_B5), Q__NOTE(_AS5), BD_NOTE(_GS5), Q__NOTE(_B5), Q__NOTE(_AS5), BD_NOTE(_GS5),
 #define RENAI_CIRCULATION
 #define PLATINUM_DISCO
 #define LP_NUMB

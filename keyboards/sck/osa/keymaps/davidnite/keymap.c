@@ -74,8 +74,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-//float layer_sound_0[][2] = SONG(ONE_UP_SOUND);
-float layer_sound_1[][2] = SONG(ZELDA_PUZZLE);
+float layer_sound_0[][2] = SONG(ONE_UP_SOUND);
+float layer_sound_1[][2] = SONG(MARIO_MUSHROOM);
 
 //bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //  switch (keycode) {
@@ -101,8 +101,8 @@ float layer_sound_1[][2] = SONG(ZELDA_PUZZLE);
 
 void matrix_init_user(void) {
   // set CapsLock LED to output and low
-  setPinOutput(C7);
-  writePinLow(C7);
+  //setPinOutput(C7);
+  //writePinLow(C7);
   // set NumLock LED to output and low
   // setPinOutput(C6);
   // writePinLow(C6);
@@ -121,11 +121,11 @@ void led_set_user(uint8_t usb_led) {
 
 uint32_t layer_state_set_user(uint32_t state)
 {
-    if (state & (1<<1)) {
-    writePinHigh(C7);
-    } else {
-        writePinLow(C7);
-    }
+    //if (state & (1<<1)) {
+    //writePinHigh(C7);
+    //} else {
+    //    writePinLow(C7);
+    //}
     // if (state & (1<<2)) {
     // writePinHigh(C6);
     // } else {
@@ -144,7 +144,7 @@ uint32_t layer_state_set_user(uint32_t state)
         PLAY_SONG(layer_sound_1);
         break;
     case 2:
-        //PLAY_SONG(layer_sound_0);
+        PLAY_SONG(layer_sound_0);
         break;
     default: //  for any other layers, or the default layer
         break;

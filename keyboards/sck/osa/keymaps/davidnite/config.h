@@ -19,7 +19,7 @@
 #define C6_AUDIO
 
 #ifdef AUDIO_ENABLE
-  #define STARTUP_SONG SONG(SONIC_RING)
+  #define STARTUP_SONG SONG(E1M1_DOOM)
 #endif
 
 // place overrides here
