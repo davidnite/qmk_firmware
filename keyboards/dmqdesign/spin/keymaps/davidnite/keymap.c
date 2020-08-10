@@ -32,18 +32,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 KC_KP_7, KC_KP_8, KC_KP_9, TO(_BL),
                 KC_KP_4, KC_KP_5, KC_KP_6, TO(_FL),
                 KC_KP_1, KC_KP_2, KC_KP_3, TO(_TL),
-                KC_KP_0, RGB_TOG, RGB_MOD
+                KC_KP_0, RGB_TOG, KC_ENTER
                 ),
 
     [_FL] = LAYOUT(/* Base */
                 KC_NO, KC_NO, KC_NO, KC_TRNS,
                 KC_NO, KC_NO, KC_NO, KC_TRNS,
                 KC_NO, KC_NO, KC_NO, KC_TRNS,
-                KC_MS_BTN1, KC_NO, KC_MS_BTN2
+                C(KC_C), C(KC_V), C(KC_X)
                 ),
 
     [_TL] = LAYOUT(/* Base */
-                KC_NO, KC_NO, KC_NO, KC_TRNS,
+                RESET, KC_NO, KC_NO, KC_TRNS,
                 KC_NO, KC_NO, KC_NO, KC_TRNS,
                 KC_NO, KC_NO, KC_NO, KC_TRNS,
                 KC_NO, KC_NO, KC_NO
@@ -55,30 +55,6 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         switch (currentLayer) {     //break each encoder update into a switch statement for the current layer
             case _BL:
                 if (clockwise) {
-                    rgblight_increase_hue();
-                } else {
-                    rgblight_decrease_hue();
-                }
-                break;
-            case _FL:
-                if (clockwise) {
-                    midi_send_cc(&midi_device, 0, 0x14, 1);
-                } else {
-                    midi_send_cc(&midi_device, 0, 0x15, 1);
-                }
-                break;
-            case _TL:
-                if (clockwise) {
-                    midi_send_cc(&midi_device, 0, 0x1A, 1);
-                } else {
-                    midi_send_cc(&midi_device, 0, 0x1B, 1);
-                }
-                break;
-        }
-    } else if (index == 1) { /* Second encoder */
-        switch (currentLayer) {
-            case _BL:
-                if (clockwise) {
                     tap_code(KC_VOLU);
                 } else {
                     tap_code(KC_VOLD);
@@ -86,16 +62,40 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                 break;
             case _FL:
                 if (clockwise) {
-                    midi_send_cc(&midi_device, 0, 0x16, 1);
+                    tap_code(KC_PGUP);
                 } else {
-                    midi_send_cc(&midi_device, 0, 0x17, 1);
+                    tap_code(KC_PGDN);
                 }
                 break;
             case _TL:
                 if (clockwise) {
-                    midi_send_cc(&midi_device, 0, 0x1C, 1);
+                    rgblight_increase_hue();
                 } else {
-                    midi_send_cc(&midi_device, 0, 0x1D, 1);
+                    rgblight_decrease_hue();
+                }
+                break;
+        }
+    } else if (index == 1) { /* Second encoder */
+        switch (currentLayer) {
+            case _BL:
+                if (clockwise) {
+                    tap_code(KC_PGUP);
+                } else {
+                    tap_code(KC_PGDN);
+                }
+                break;
+            case _FL:
+                if (clockwise) {
+                    tap_code16(C(KC_RGHT));
+                } else {
+                    tap_code16(C(KC_LEFT));
+                }
+                break;
+            case _TL:
+                if (clockwise) {
+                    rgblight_increase_val();
+                } else {
+                    rgblight_decrease_val();
                 }
                 break;
         }
@@ -103,47 +103,79 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         switch (currentLayer) {
             case _BL:
                 if (clockwise) {
-                    rgblight_increase_val();
+                    rgblight_increase_hue();
                 } else {
-                    rgblight_decrease_val();
+                    rgblight_decrease_hue();
                 }
                 break;
             case _FL:
                 if (clockwise) {
-                    midi_send_cc(&midi_device, 0, 0x18, 1);
+                    tap_code16(C(KC_Y));
                 } else {
-                    midi_send_cc(&midi_device, 0, 0x19, 1);
+                    tap_code16(C(KC_Z));
                 }
                 break;
             case _TL:
                 if (clockwise) {
-                    midi_send_cc(&midi_device, 0, 0x1E, 1);
+                    rgblight_step();
                 } else {
-                    midi_send_cc(&midi_device, 0, 0x1F, 1);
+                    rgblight_step_reverse();
                 }
                 break;
         }
     }
 }
 
+oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
+
+#ifdef OLED_DRIVER_ENABLE
+void oled_task_user(void) {
+    static const char PROGMEM qmk_logo[] = {
+        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
+        0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4,
+        0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0x00
+    };
+
+    // Host Keyboard Layer Status
+    oled_write_P(PSTR("Layer: "), false);
+
+    switch (get_highest_layer(layer_state)) {
+        case _BL:
+            oled_write_P(PSTR("NUM\n"), false);
+            break;
+        case _FL:
+            oled_write_P(PSTR("CODE\n"), false);
+            break;
+        case _TL:
+            oled_write_P(PSTR("RGB\n"), false);
+            break;
+        default:
+            // Or use the write_ln shortcut over adding '\n' to the end of your string
+            oled_write_ln_P(PSTR("Undefined"), false);
+    }
+
+    oled_write_P(qmk_logo, false);
+}
+#endif
+
 layer_state_t layer_state_set_user(layer_state_t state) { //This will run every time the layer is updated
     currentLayer = get_highest_layer(state);
 
     switch (currentLayer) {
         case _BL:
-            setrgb(RGB_WHITE, &led[0]); //Set the top LED to white for the bottom layer
+            setrgb(RGB_CYAN, &led[0]); //Set the top LED to white for the bottom layer
             setrgb(0, 0, 0, &led[1]);
             setrgb(0, 0, 0, &led[2]);
             break;
         case _FL:
             setrgb(0, 0, 0, &led[0]); //Set the middle LED to white for the middle layer
-            setrgb(RGB_WHITE, &led[1]);
+            setrgb(RGB_CYAN, &led[1]);
             setrgb(0, 0, 0, &led[2]);
             break;
         case _TL:
             setrgb(0, 0, 0, &led[0]);
             setrgb(0, 0, 0, &led[1]);
-            setrgb(RGB_WHITE, &led[2]); //Set the bottom LED to white for the top layer
+            setrgb(RGB_CYAN, &led[2]); //Set the bottom LED to white for the top layer
             break;
     }
     rgblight_set();
