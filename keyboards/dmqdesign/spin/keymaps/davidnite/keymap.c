@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 ),
 
     [_FL] = LAYOUT(/* Base */
-                KC_NO, KC_NO, KC_NO, KC_TRNS,
+                C(S(KC_M)), C(S(KC_O)), C(S(KC_SPC)), KC_TRNS,
                 KC_NO, KC_NO, KC_NO, KC_TRNS,
                 KC_NO, KC_NO, KC_NO, KC_TRNS,
                 C(KC_C), C(KC_V), C(KC_X)
@@ -248,13 +248,13 @@ layer_state_t layer_state_set_user(layer_state_t state) { //This will run every 
             break;
         case _FL:
             setrgb(0, 0, 0, &led[0]); //Set the middle LED to white for the middle layer
-            setrgb(RGB_CYAN, &led[1]);
+            setrgb(RGB_MAGENTA, &led[1]);
             setrgb(0, 0, 0, &led[2]);
             break;
         case _TL:
             setrgb(0, 0, 0, &led[0]);
             setrgb(0, 0, 0, &led[1]);
-            setrgb(RGB_CYAN, &led[2]); //Set the bottom LED to white for the top layer
+            setrgb(RGB_ORANGE, &led[2]); //Set the bottom LED to white for the top layer
             break;
     }
     rgblight_set();
