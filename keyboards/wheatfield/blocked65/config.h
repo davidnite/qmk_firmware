@@ -3,8 +3,8 @@
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0x5746
-#define PRODUCT_ID      0x464E
+#define VENDOR_ID       0x5746 //WF
+#define PRODUCT_ID      0x0001 //Blocked65
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    Dou
 #define PRODUCT         Blocked65
